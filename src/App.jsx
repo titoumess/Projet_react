@@ -4,14 +4,12 @@ import HomePage from "./pages/HomePage";
 import EventPage from "./pages/EventPage";
 import CartPage from "./pages/CartPage";
 import Navbar from "./components/NavBar";
-import { CartProvider } from "./context/CartContext";
 import "./styles/global.css";
 
 function App() {
 
 
   return (
-    <CartProvider>
       <Router>
         <Navbar />
         <Routes>
@@ -20,7 +18,6 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
         </Routes>
       </Router>
-    </CartProvider>
   );
 }
 
