@@ -1,7 +1,7 @@
 # Projet_react
 
-# Créateurs : 
+## Créateurs : 
 
-# Ponchaut Léane
-# Toullec Alexis
-# Messager Titouan
+### Ponchaut Léane
+### Toullec Alexis
+### Messager Titouan
