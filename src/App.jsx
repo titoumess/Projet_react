@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import EventPage from "./pages/EventPage";
 import CartPage from "./pages/CartPage";
-import Navbar from "./components/NavBar";
+import NavBar from "./components/NavBar";
 import "./styles/global.css";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 
   return (
       <Router>
-        <Navbar />
+        <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/event/:id" element={<EventPage />} />
