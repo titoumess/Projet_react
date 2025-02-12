@@ -8,6 +8,8 @@ import { CartProvider } from "./context/CartContext";
 import "./styles/global.css";
 
 function App() {
+
+
   return (
     <CartProvider>
       <Router>
