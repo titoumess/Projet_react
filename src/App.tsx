@@ -19,7 +19,7 @@ function App() {
         </header>
 
         <main className='p-4'> 
-          {page === 'details' ? <Details eventId={eventId} /> : <Events setPage={setPage} setEventId={setEventId} />}
+          {page === 'details' ? <Details setPage={setPage} eventId={eventId} /> : <Events setPage={setPage} setEventId={setEventId} />}
         </main>
       </div>
     </>

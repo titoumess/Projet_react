@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Details({ eventId }) {
+export default function Details({ setPage, eventId }) {
     const [event, setEvent] = useState(null);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export default function Details({ eventId }) {
 
     return (
         <div className="p-4">
-            <button onClick={() => setPage('events')} className="mb-4 bg-blue-500 text-white p-2 rounded">
+            <button onClick={() => setPage('Events')} className="mb-4 bg-blue-500 text-white p-2 rounded">
                 Retour
             </button>
             <h1 className="text-2xl font-bold">{event.title}</h1>
