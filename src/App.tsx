@@ -13,8 +13,8 @@ function App() {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto min-h-screen border-x">
-        <header className='flex justify-between items-center p-4 bg-neutral-300'>
+      <div >
+        <header>
           {page === 'details' ? <Header setPage={handlePageChange} /> : <Header setPage={handlePageChange} />}
         </header>
 
