@@ -1,7 +1,7 @@
 {
-    "event": [
+    "events": [
       { 
-        "id": 1, 
+        "id": "1", 
         "title": "concert en plein air", 
         "description": "Magnifique concert en plein air sur la place du chateau de Chambord", 
         "date" : "25/02/2025", "place" : "Château de Chambord", 
@@ -12,7 +12,7 @@
         "places_left" : 28
       },
       {
-        "id": 2,
+        "id": "2",
         "title": "Silent Disco en pleine nature",
         "description": "Dansez sous les étoiles avec votre casque audio, ambiance garantie !",
         "date": "15/03/2025",
@@ -24,7 +24,7 @@
         "places_left": 75
       },
       {
-        "id": 3,
+        "id": "3",
         "title": "Bataille de coussins géante",
         "description": "Un lâcher de plumes géant au cœur de la ville, préparez-vous au combat !",
         "date": "01/04/2025",
@@ -36,7 +36,7 @@
         "places_left": 150
       },
       {
-        "id": 4,
+        "id": "4",
         "title": "Mario Kart IRL",
         "description": "Enfilez votre costume et foncez sur une piste réelle avec des karts customisés !",
         "date": "22/06/2025",
@@ -48,7 +48,7 @@
         "places_left": 40
       },
       {
-        "id": 5,
+        "id": "5",
         "title": "Soirée Loup-Garou grandeur nature",
         "description": "Vivez une partie de Loup-Garou immersive dans un vrai village hanté.",
         "date": "31/10/2025",
@@ -61,8 +61,8 @@
       }
     ],
     "category": [
-      { "id": 1, "name": "musique"},
-      { "id": 2, "name": "sport"},
-      { "id": 3, "name": "jeux"}
+      { "id": "1", "name": "musique"},
+      { "id": "2", "name": "sport"},
+      { "id": "3", "name": "jeux"}
     ]
   }

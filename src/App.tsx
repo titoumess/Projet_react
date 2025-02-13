@@ -1,11 +1,12 @@
-import Posts from './Posts'
-import Details from './Details'
-import { useState } from "react"
+import Events from './Events'; // Correction du nom du fichier
+import Details from './Details';
+import { useState } from "react";
+
 function App() {
-  const [page, setPage] = useState('posts')
+  const [page, setPage] = useState('events'); // Changement de 'posts' à 'events'
 
   const handlePageChange = (page) => {
-    setPage(page)
+    setPage(page);
   }
 
   return (
@@ -14,17 +15,19 @@ function App() {
         <header className='flex justify-between items-center p-4 bg-neutral-300'>
           <h1 
             className='cursor-pointer'
-            onClick={() => setPage('posts')}
-            >  REACT PROJECT </h1>
+            onClick={() => setPage('events')} // Changement de 'posts' à 'events'
+          >
+            REACT PROJECT
+          </h1>
           <span> PANIER </span>
         </header>
 
         <main className='p-4'> 
-          {page === 'details' ? <Details /> : <Posts setPage={setPage} />}
+          {page === 'details' ? <Details /> : <Events setPage={setPage} />}
         </main>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
