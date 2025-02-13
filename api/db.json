@@ -6,7 +6,7 @@
         "description": "Magnifique concert en plein air sur la place du chateau de Chambord", 
         "date" : "25/02/2025", "place" : "Château de Chambord", 
         "price" : 12, 
-        "image" : "./assets/chambord_concert.jpeg", 
+        "image" : "chambord_concert.jpeg", 
         "organizer" : "Ville de Chambord",
         "category_id" : 1,
         "places_left" : 28
@@ -18,7 +18,7 @@
         "date": "15/03/2025",
         "place": "Forêt de Fontainebleau",
         "price": 15,
-        "image": "./assets/silent_disco.jpeg",
+        "image": "silent_disco.jpeg",
         "organizer": "NightVibes",
         "category_id": 1,
         "places_left": 75
@@ -30,7 +30,7 @@
         "date": "01/04/2025",
         "place": "Place Bellecour, Lyon",
         "price": 5,
-        "image": "./assets/bataille_coussins.jpeg",
+        "image": "bataille_coussins.jpeg",
         "organizer": "FunCity",
         "category_id": 2,
         "places_left": 150
@@ -42,7 +42,7 @@
         "date": "22/06/2025",
         "place": "Circuit de Magny-Cours",
         "price": 30,
-        "image": "./assets/mario_kart_irl.jpeg",
+        "image": "mario_kart_irl.jpeg",
         "organizer": "GoKart Legends",
         "category_id": 3,
         "places_left": 40
@@ -54,7 +54,7 @@
         "date": "31/10/2025",
         "place": "Village de Montsereau",
         "price": 18,
-        "image": "./assets/loup_garou_live.jpeg",
+        "image": "loup_garou_live.jpeg",
         "organizer": "Mystic Events",
         "category_id": 3,
         "places_left": 60

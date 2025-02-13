@@ -4,7 +4,8 @@ import Details from './Details';
 import { useState } from "react";
 
 function App() {
-  const [page, setPage] = useState('events'); // Changement de 'posts' à 'events'
+  const [page, setPage] = useState('events');
+  const [eventId, setEventId] = useState(null);
 
   const handlePageChange = (page) => {
     setPage(page);
@@ -18,7 +19,7 @@ function App() {
         </header>
 
         <main className='p-4'> 
-          {page === 'details' ? <Details /> : <Events setPage={setPage} />}
+          {page === 'details' ? <Details eventId={eventId} /> : <Events setPage={setPage} setEventId={setEventId} />}
         </main>
       </div>
     </>
