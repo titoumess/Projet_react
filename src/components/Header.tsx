@@ -5,7 +5,7 @@ export default function Header({ setPage }) {
                 {/* Logo ou titre du site */}
                 <h1 
                     className="text-2xl font-bold cursor-pointer"
-                    onClick={() => setPage('home')} // Redirige vers la page d'accueil
+                    onClick={() => setPage('Events')} // Redirige vers la page d'accueil
                 >
                     Site sympa
                 </h1>
