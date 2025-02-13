@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 
-export default function Events({ setPage }) {
+export default function Events({ setPage, setEventId }) {
     const [events, setEvents] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/events') // Assurez-vous que cette URL correspond à l'emplacement de votre fichier JSON
+        fetch('http://localhost:3000/events')
             .then((response) => response.json())
-            .then((json) => {
-                // Les événements sont stockés sous la clé "event" dans votre JSON
-                setEvents(json);
-            })
+            .then((json) => {setEvents(json)})
             .catch((error) => console.error('Erreur lors de la récupération des événements:', error));
     }, []);
 
@@ -20,7 +17,9 @@ export default function Events({ setPage }) {
                     <div 
                         key={event.id} 
                         className="border border-neutral-200 p-4 cursor-pointer"
-                        onClick={() => setPage('details')} // Redirige vers la page des détails
+                        onClick={() => {
+                            setEventId(event.id); setPage('details')
+                        }}
                     >
                         <img 
                             src={event.image} 
