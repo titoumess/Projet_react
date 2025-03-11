@@ -1,38 +1,44 @@
-export default function Header({ setPage }) {
-    return (
-        <header className="bg-neutral-800 text-white p-4 shadow-lg w-full">
-            <div className="container mx-auto flex justify-between items-center">
-                {/* Logo ou titre du site */}
-                <h1 
-                    className="text-2xl font-bold cursor-pointer"
-                    onClick={() => setPage('Events')} // Redirige vers la page d'accueil
-                >
-                    Site sympa
-                </h1>
-                {/* Menu de navigation */}
-                <nav className="flex space-x-6 ml-8">
-                    <a 
-                        className="hover:text-neutral-400 cursor-pointer"
-                        onClick={() => setPage('Events')}
-                    >
-                        Événements
-                    </a>
+import Search from "./Search";
 
-                </nav>
+export default function Header({ setPage, setSearchQuery }) {
+    return (
+        <header className="bg-neutral-800 text-white p-4 shadow-lg w-full">
+            <div className="container mx-auto flex items-center">
+                {/* Logo */}
+                <div>
+                    <img 
+                        src="/public/logo_test.png" 
+                        alt="Logo du site" 
+                        className="h-10 cursor-pointer"
+                        onClick={() => setPage('events')}
+                    />
+                </div>
 
-                {/* Espace réservé pour la barre de recherche (à intégrer plus tard) */}
-                <div className="flex-1 mx-4 lg:block">
-                    {/* La barre de recherche sera ajoutée ici plus tard */}
-                </div>
+                {/* Menu de navigation */}
+                <div className="ml-4">
+                    <a 
+                        className="cursor-pointer text-lg"
+                        onClick={() => setPage('events')}
+                        aria-label="Voir les événements"
+                    >
+                        Événements
+                    </a>
+                </div>
 
-                {/* Bouton Panier (logo) */}
-                <div 
-                    className="cursor-pointer"
-                    onClick={() => setPage('cart')} 
-                >
-                    <span className="text-2xl">🛒</span>
-                </div>
-            </div>
-        </header>
-    );
+                {/* Barre de recherche centrée sur toute la largeur */}
+                <div className="flex-grow flex justify-center mx-auto">
+                    <Search onSearch={setSearchQuery} className="w-full max-w-2xl" />
+                </div>
+
+                {/* Bouton Panier (logo) */}
+                <div 
+                    className="cursor-pointer text-2xl hover:text-indigo-400 ml-auto"
+                    onClick={() => setPage('cart')} 
+                    aria-label="Voir le panier"
+                >
+                    🛒
+                </div>
+            </div>
+        </header>
+    );
 }
