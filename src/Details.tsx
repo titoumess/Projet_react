@@ -3,13 +3,17 @@ import FormResa from "./components/FormResa";
 
 export default function Details({ setPage, eventId }) {
     const [event, setEvent] = useState(null);
+    const [eventPlaces, setEventPlaces] = useState(null);
 
     useEffect(() => {
         if (!eventId) return;
         
         fetch(`http://localhost:3000/events/${eventId}`)
             .then((response) => response.json())
-            .then((json) => setEvent(json))
+            .then((json) => {
+                setEvent(json)
+                setEventPlaces(json.places_left)
+            })
             .catch((error) => console.error("Erreur lors du chargement du post :", error));
     }, [eventId]);
 
@@ -18,7 +22,7 @@ export default function Details({ setPage, eventId }) {
     return (
         <div className="p-4">
             <div>
-                <button onClick={() => setPage('Events')} className="mb-4 bg-neutral-500 text-white p-2 rounded cursor-pointer">
+                <button className="mb-4 bg-neutral-500 text-white p-2 rounded cursor-pointer">
                     Retour
                 </button>
                 <h1 className="text-2xl font-bold">{event.title}</h1>
@@ -28,10 +32,10 @@ export default function Details({ setPage, eventId }) {
                 <p><strong>Date :</strong> {event.date}</p>
                 <p><strong>Organisateur :</strong> {event.organizer}</p>
                 <p><strong>Prix :</strong> {event.price} €</p>
-                <p><strong>Places restantes :</strong> {event.places_left}</p>
+                <p><strong>Places restantes :</strong> {eventPlaces}</p>
             </div>
             <div>
-                <FormResa event={event}/>
+                <FormResa event={event} setEventPlaces={setEventPlaces}/>
             </div>
         </div>
     );

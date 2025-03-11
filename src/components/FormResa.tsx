@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function FormResa({ event }) {
+export default function FormResa({ event, setEventPlaces }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [places, setPlaces] = useState(1);
@@ -12,53 +12,75 @@ export default function FormResa({ event }) {
     return re.test(email);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = {};
+  const updateEventPlaces = async (eventId: number, event: any) => {
+    try {
+      const response = await fetch(`http://localhost:3000/events/${eventId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(event),
+      });
 
-    // Vérification des champs
+      if (!response.ok) {
+        throw new Error("Erreur lors de la mise à jour des places");
+      }
+
+      const updatedEvent = await response.json(); 
+      return updatedEvent.places_left; 
+    } catch (error) {
+      console.error("Erreur:", error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    console.log('submit')
+    e.preventDefault();
+    
+    // Vérification des erreurs
+    const newErrors = {};
     if (!name.trim()) {
       newErrors.name = "Le nom est obligatoire";
     }
-
-    if (!validateEmail(email)) {
-      newErrors.email = "L'email n'est pas valide";
-    }
-
+    // if (!validateEmail(email)) {
+    //   newErrors.email = "L'email n'est pas valide";
+    // }
     if (places < 1) {
       newErrors.places = "Vous devez réserver au moins 1 place";
     }
-
     if (places > event.places_left) {
       newErrors.places = `Il ne reste que ${event.places_left} places disponibles`;
     }
-
+    
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
-    // Stockage dans le localStorage
-    const reservation = {
-      eventId: event.id,
-      places: places
-    };
-    
-    // Récupération des réservations existantes ou création d'un nouveau tableau
-    const currentReservations = JSON.parse(localStorage.getItem("reservations")) || [];
-    localStorage.setItem("reservations", JSON.stringify([...currentReservations, reservation]));
-    
-    // Reset du formulaire et affichage du message de succès
+    let newEvent = {
+      ...event, 
+      places_left: event.places_left - places
+    }
+  
+    const newPlacesLeft = await updateEventPlaces(event.id, newEvent);
+    if (newPlacesLeft !== null) {
+      console.log(newPlacesLeft)
+      setEventPlaces(newPlacesLeft)
+    }
+    // Mise à jour du state local pour refléter le changement
+    setSuccess(true);
+  
+    // Réinitialiser le formulaire
     setName("");
     setEmail("");
     setPlaces(1);
-    setErrors({});
-    setSuccess(true);
-    
+  
+    // Affichage temporaire du message de succès
     setTimeout(() => {
       setSuccess(false);
     }, 3000);
   };
+  
 
   return (
     <div className="mt-6 bg-gray-100 p-4 rounded">
@@ -86,7 +108,7 @@ export default function FormResa({ event }) {
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
           <input
-            type="email"
+            // type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -114,7 +136,7 @@ export default function FormResa({ event }) {
             type="submit"
             className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Réserver
+            Ajouter au panier
           </button>
         </div>
       </form>
