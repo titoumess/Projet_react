@@ -6,12 +6,8 @@ export default function Filter({ events, onFilterChange, filters }) {
         return Array.from(new Set(events?.map(event => event.place))).sort();
     }, [events]);
 
-    const handleSortByDateChange = (e) => {
-        onFilterChange({ sortByDate: e.target.value });
-    };
-
-    const handleSortByPriceChange = (e) => {
-        onFilterChange({ sortByPrice: e.target.value });
+    const handleSortChange = (e) => {
+        onFilterChange({ sort: e.target.value });
     };
 
     const handleShowOnlyAvailableChange = (e) => {
@@ -24,35 +20,25 @@ export default function Filter({ events, onFilterChange, filters }) {
 
     return (
         <div className="bg-white shadow-md rounded-lg px-6 py-4 mb-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Filtrer les événements</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Filtrer les événements</h3>        
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {/* Trier par date */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-end">
+                {/* Trier par prix et date */}
                 <div className="flex flex-col">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Trier par date</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Trier</label>
                     <select
-                        value={filters.sortByDate}
-                        onChange={handleSortByDateChange}
+                        value={filters.sort}
+                        onChange={handleSortChange}
                         className="p-2 bg-gray-50 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
                     >
+                        <option value="">Aucun tri</option>
+                        <option value="priceAsc">Prix croissant</option>
+                        <option value="priceDesc">Prix décroissant</option>
                         <option value="dateAsc">Date croissante</option>
                         <option value="dateDesc">Date décroissante</option>
                     </select>
                 </div>
-                
-                {/* Trier par prix */}
-                <div className="flex flex-col">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Trier par prix</label>
-                    <select
-                        value={filters.sortByPrice}
-                        onChange={handleSortByPriceChange}
-                        className="p-2 bg-gray-50 border border-gray-300 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
-                    >
-                        <option value="priceAsc">Prix croissant</option>
-                        <option value="priceDesc">Prix décroissant</option>
-                    </select>
-                </div>
-                
+               
                 {/* Sélectionner un lieu */}
                 <div className="flex flex-col">
                     <label className="block text-sm font-medium text-gray-700 mb-1">Lieu</label>
@@ -67,9 +53,9 @@ export default function Filter({ events, onFilterChange, filters }) {
                         ))}
                     </select>
                 </div>
-                
+               
                 {/* Ne pas afficher les événements complets */}
-                <div className="flex items-center self-end h-10">
+                <div className="flex items-center h-10">
                     <label className="inline-flex items-center cursor-pointer">
                         <input
                             type="checkbox"
