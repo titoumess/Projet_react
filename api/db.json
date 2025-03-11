@@ -1,15 +1,16 @@
 {
   "events": [
-    { 
-      "id": "1", 
-      "title": "concert en plein air", 
-      "description": "Magnifique concert en plein air sur la place du chateau de Chambord", 
-      "date" : "25/02/2025", "place" : "Château de Chambord", 
-      "price" : 12, 
-      "image" : "chambord_concert.jpeg", 
-      "organizer" : "Ville de Chambord",
-      "category_id" : 1,
-      "places_left" : 28
+    {
+      "id": "1",
+      "title": "concert en plein air",
+      "description": "Magnifique concert en plein air sur la place du chateau de Chambord",
+      "date": "25/02/2025",
+      "place": "Château de Chambord",
+      "price": 12,
+      "image": "chambord_concert.jpeg",
+      "organizer": "Ville de Chambord",
+      "category_id": 1,
+      "places_left": 19
     },
     {
       "id": "2",
@@ -24,18 +25,6 @@
       "places_left": 75
     },
     {
-      "id": "3",
-      "title": "Bataille de coussins géante",
-      "description": "Un lâcher de plumes géant au cœur de la ville, préparez-vous au combat !",
-      "date": "01/04/2025",
-      "place": "Place Bellecour, Lyon",
-      "price": 5,
-      "image": "bataille_coussins.jpeg",
-      "organizer": "FunCity",
-      "category_id": 2,
-      "places_left": 150
-    },
-    {
       "id": "4",
       "title": "Mario Kart IRL",
       "description": "Enfilez votre costume et foncez sur une piste réelle avec des karts customisés !",
@@ -45,7 +34,7 @@
       "image": "mario_kart_irl.jpeg",
       "organizer": "GoKart Legends",
       "category_id": 3,
-      "places_left": 40
+      "places_left": 36
     },
     {
       "id": "5",
@@ -69,7 +58,7 @@
       "image": "jazz_festival.jpeg",
       "organizer": "Lac d'Annecy Music",
       "category_id": 1,
-      "places_left": 150
+      "places_left": 138
     },
     {
       "id": "7",
@@ -81,7 +70,7 @@
       "image": "relais_ville.jpeg",
       "organizer": "RunParis",
       "category_id": 2,
-      "places_left": 80
+      "places_left": 33
     },
     {
       "id": "8",
@@ -93,7 +82,7 @@
       "image": "flechettes_geantes.jpeg",
       "organizer": "DartMasters",
       "category_id": 2,
-      "places_left": 50
+      "places_left": 39
     },
     {
       "id": "9",
@@ -117,12 +106,21 @@
       "image": "deguisement_steampunk.jpeg",
       "organizer": "CosplayParis",
       "category_id": 3,
-      "places_left": 120
+      "places_left": 108
     }
   ],
   "category": [
-    { "id": "1", "name": "musique"},
-    { "id": "2", "name": "sport"},
-    { "id": "3", "name": "jeux"}
+    {
+      "id": "1",
+      "name": "musique"
+    },
+    {
+      "id": "2",
+      "name": "sport"
+    },
+    {
+      "id": "3",
+      "name": "jeux"
+    }
   ]
 }
