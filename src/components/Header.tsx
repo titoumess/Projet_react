@@ -1,6 +1,16 @@
+import { useState } from "react";
 import Search from "./Search";
+import CartModal from "../Popup_panier.tsx";
 
 export default function Header({ setPage, setSearchQuery }) {
+
+    const [cartItems, setCartItems] = useState([
+    { name: "Concert Jazz", price: 25 },
+    { name: "Théâtre Impro", price: 18 },
+  ]);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <header className="bg-neutral-800 text-white p-4 shadow-lg w-full">
             <div className="container mx-auto flex items-center">
@@ -31,13 +41,16 @@ export default function Header({ setPage, setSearchQuery }) {
                 </div>
 
                 {/* Bouton Panier (logo) */}
+                {/* Image cliquable pour ouvrir le panier */}
                 <div 
                     className="cursor-pointer text-2xl hover:text-indigo-400 ml-auto"
-                    onClick={() => setPage('cart')} 
+                    onClick={() => setIsModalOpen(true)} 
                     aria-label="Voir le panier"
                 >
                     🛒
                 </div>
+                {/* Modal du panier */}
+                <CartModal cartItems={cartItems} isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
             </div>
         </header>
     );

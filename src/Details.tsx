@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useLocalStorage } from "./useLocalStorage";
+import CartModal from "./Popup_panier";
 
 export default function Details({ setPage, eventId }) {
-    const [event, setEvent] = useState(null);
+    const [event, setEvent] = useState("");
 
     useEffect(() => {
         if (!eventId) return;
