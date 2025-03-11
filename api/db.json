@@ -10,7 +10,7 @@
       "image": "chambord_concert.jpeg",
       "organizer": "Ville de Chambord",
       "category_id": 1,
-      "places_left": 19
+      "places_left": 18
     },
     {
       "id": "2",
@@ -58,7 +58,7 @@
       "image": "jazz_festival.jpeg",
       "organizer": "Lac d'Annecy Music",
       "category_id": 1,
-      "places_left": 138
+      "places_left": 137
     },
     {
       "id": "7",
@@ -70,7 +70,7 @@
       "image": "relais_ville.jpeg",
       "organizer": "RunParis",
       "category_id": 2,
-      "places_left": 33
+      "places_left": 32
     },
     {
       "id": "8",
@@ -82,7 +82,7 @@
       "image": "flechettes_geantes.jpeg",
       "organizer": "DartMasters",
       "category_id": 2,
-      "places_left": 39
+      "places_left": 38
     },
     {
       "id": "9",

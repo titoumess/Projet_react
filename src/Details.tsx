@@ -22,7 +22,7 @@ export default function Details({ setPage, eventId }) {
     return (
         <div className="p-4">
             <div>
-                <button className="mb-4 bg-neutral-500 text-white p-2 rounded cursor-pointer">
+                <button onClick={() => setPage('Events')} className="mb-4 bg-neutral-500 text-white p-2 rounded cursor-pointer">
                     Retour
                 </button>
                 <h1 className="text-2xl font-bold">{event.title}</h1>

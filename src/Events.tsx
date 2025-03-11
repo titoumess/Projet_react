@@ -11,6 +11,11 @@ export default function Events({ setPage, setEventId, searchQuery }) {
         selectedPlace: ''
     });
 
+    function parseDate(dateString:string) {
+        const [day, month, year] = dateString.split('/');
+        return new Date(`${month}/${day}/${year}`);
+      }
+
     // Chargement des événements depuis l'API
     useEffect(() => {
         console.log("Chargement des événements...");
@@ -108,7 +113,7 @@ export default function Events({ setPage, setEventId, searchQuery }) {
                             />
                             <div className="p-4">
                                 <h2 className="text-lg font-semibold text-gray-800">{event.title}</h2>
-                                <p className="text-sm text-gray-500 mt-1">📅 {new Date(event.date).toLocaleDateString()} - 📍 {event.place}</p>
+                                <p className="text-sm text-gray-500 mt-1">📅 {parseDate(event.date).toLocaleDateString()} - 📍 {event.place}</p>
                                 <p className="text-md font-bold text-indigo-600 mt-2">💰 {event.price} €</p>
                                 <p className={`text-sm mt-1 ${event.places_left <= 0 ? 'text-red-600 font-bold' : 'text-green-600'}`}>
                                     🎟️ {event.places_left} {event.places_left <= 0 ? 'COMPLET' : 'Places restantes'}
