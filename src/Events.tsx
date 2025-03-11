@@ -111,7 +111,7 @@ export default function Events({ setPage, setEventId, searchQuery }) {
                                 <p className="text-sm text-gray-500 mt-1">📅 {new Date(event.date).toLocaleDateString()} - 📍 {event.place}</p>
                                 <p className="text-md font-bold text-indigo-600 mt-2">💰 {event.price} €</p>
                                 <p className={`text-sm mt-1 ${event.places_left <= 0 ? 'text-red-600 font-bold' : 'text-green-600'}`}>
-                                    🎟️  {event.places_left <= 0 ? 'COMPLET' : 'Places restantes'}
+                                    🎟️ {event.places_left} {event.places_left <= 0 ? 'COMPLET' : 'Places restantes'}
                                 </p>
                             </div>
                         </div>
