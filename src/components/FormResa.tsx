@@ -67,6 +67,16 @@ export default function FormResa({ event, setEventPlaces }) {
       console.log(newPlacesLeft)
       setEventPlaces(newPlacesLeft)
     }
+    const reservationData = {
+      name,
+      email,
+      places,
+      eventId: event.id,
+      eventName: event.name,
+    };
+    
+    localStorage.setItem(`reservation_${event.id}`, JSON.stringify(reservationData));
+  
     // Mise à jour du state local pour refléter le changement
     setSuccess(true);
   
