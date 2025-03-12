@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Filter from "./components/Filter";
+import { Calendar, MapPin, DollarSign, Ticket } from "lucide-react";
 
 export default function Events({ setPage, setEventId, searchQuery }) {
     const [events, setEvents] = useState([]);
@@ -9,7 +10,7 @@ export default function Events({ setPage, setEventId, searchQuery }) {
         sort: '',
         showOnlyAvailable: false,
         selectedPlace: '',
-        selectedCategory: '' // Ajout du nouveau filtre par catégorie
+        selectedCategory: ''
     });
     const [currentPage, setCurrentPage] = useState(1);
     const eventsPerPage = 8;
@@ -146,7 +147,7 @@ export default function Events({ setPage, setEventId, searchQuery }) {
                 filters={filters}
                 onFilterChange={handleFilterChange}
                 events={events}
-                categories={categories} // Passer les catégories au composant Filter
+                categories={categories}
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
@@ -164,16 +165,26 @@ export default function Events({ setPage, setEventId, searchQuery }) {
                             />
                             <div className="p-4">
                                 <h2 className="text-lg font-semibold text-gray-800">{event.title}</h2>
-                                <p className="text-sm text-gray-500 mt-1">📅 {formatDateForDisplay(event.date)} - 📍 {event.place}</p>
+                                <div className="flex items-center mt-1 text-sm text-gray-500">
+                                    <Calendar className="h-4 w-4 mr-1" />
+                                    <span>{formatDateForDisplay(event.date)}</span>
+                                    <span className="mx-1">-</span>
+                                    <MapPin className="h-4 w-4 mr-1" />
+                                    <span>{event.place}</span>
+                                </div>
                                 <div className="flex justify-between items-center mt-2">
-                                    <p className="text-md font-bold text-indigo-600">💰 {event.price} €</p>
+                                    <div className="flex items-center text-md font-bold text-blue-600">
+                                        <DollarSign className="h-4 w-4 mr-1" />
+                                        <span>{event.price} €</span>
+                                    </div>
                                     <span className="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full">
                                         {getCategoryName(event.category_id)}
                                     </span>
                                 </div>
-                                <p className={`text-sm mt-1 ${event.places_left <= 0 ? 'text-red-600 font-bold' : 'text-green-600'}`}>
-                                  🎟️ {event.places_left <= 0 ? 'COMPLET' : `${event.places_left} Places restantes`}
-                                </p>
+                                <div className={`flex items-center text-sm mt-2 ${event.places_left <= 0 ? 'text-red-600 font-bold' : 'text-green-600'}`}>
+                                    <Ticket className="h-4 w-4 mr-1" />
+                                    <span>{event.places_left <= 0 ? 'COMPLET' : `${event.places_left} Places restantes`}</span>
+                                </div>
                             </div>
                         </div>
                     ))
