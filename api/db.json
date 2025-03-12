@@ -2,7 +2,7 @@
   "events": [
     {
       "id": "1",
-      "title": "concert en plein air",
+      "title": "Concert en plein air",
       "description": "Magnifique concert en plein air sur la place du chateau de Chambord",
       "date": "25/02/2025",
       "place": "Château de Chambord",
@@ -22,7 +22,7 @@
       "image": "silent_disco.jpeg",
       "organizer": "NightVibes",
       "category_id": 1,
-      "places_left": 75
+      "places_left": 74
     },
     {
       "id": "4",
