@@ -112,15 +112,15 @@
   "category": [
     {
       "id": "1",
-      "name": "musique"
+      "name": "Musique"
     },
     {
       "id": "2",
-      "name": "sport"
+      "name": "Sport"
     },
     {
       "id": "3",
-      "name": "jeux"
+      "name": "Jeux"
     }
   ]
 }

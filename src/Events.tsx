@@ -3,12 +3,13 @@ import Filter from "./components/Filter";
 
 export default function Events({ setPage, setEventId, searchQuery }) {
     const [events, setEvents] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [filters, setFilters] = useState({
-        
         sort: '',
         showOnlyAvailable: false,
-        selectedPlace: ''
+        selectedPlace: '',
+        selectedCategory: '' // Ajout du nouveau filtre par catégorie
     });
     const [currentPage, setCurrentPage] = useState(1);
     const eventsPerPage = 8;
@@ -19,9 +20,10 @@ export default function Events({ setPage, setEventId, searchQuery }) {
         return new Date(`${year}-${month}-${day}`);
     };
 
-    // Chargement des événements depuis l'API
+    // Chargement des événements et catégories depuis l'API
     useEffect(() => {
         console.log("Chargement des événements...");
+        // Charger les événements
         fetch('http://localhost:3000/events')
             .then((response) => response.json())
             .then((json) => {
@@ -29,7 +31,16 @@ export default function Events({ setPage, setEventId, searchQuery }) {
                 setEvents(json);
                 setFilteredEvents(json); // Initialiser avec tous les événements
             })
-            .catch((error) => console.error('Erreur:', error));
+            .catch((error) => console.error('Erreur lors du chargement des événements:', error));
+        
+        // Charger les catégories
+        fetch('http://localhost:3000/category')
+            .then((response) => response.json())
+            .then((json) => {
+                console.log("Catégories récupérées :", json);
+                setCategories(json);
+            })
+            .catch((error) => console.error('Erreur lors du chargement des catégories:', error));
     }, []); // Se déclenche une seule fois lors du premier rendu
 
     useEffect(() => {
@@ -38,9 +49,16 @@ export default function Events({ setPage, setEventId, searchQuery }) {
     
         let newFilteredEvents = [...events];
     
-        // Application des filtres de place et de disponibilité
+        // Application des filtres de place, de catégorie et de disponibilité
         if (filters.selectedPlace) {
             newFilteredEvents = newFilteredEvents.filter(event => event.place === filters.selectedPlace);
+        }
+        
+        // Filtre par catégorie
+        if (filters.selectedCategory) {
+            newFilteredEvents = newFilteredEvents.filter(event => 
+                event.category_id.toString() === filters.selectedCategory
+            );
         }
     
         if (filters.showOnlyAvailable) {
@@ -116,12 +134,19 @@ export default function Events({ setPage, setEventId, searchQuery }) {
         return dateStr;
     };
 
+    // Trouver le nom de la catégorie à partir de l'ID
+    const getCategoryName = (categoryId) => {
+        const category = categories.find(cat => cat.id.toString() === categoryId.toString());
+        return category ? category.name : '';
+    };
+
     return (
         <div>
             <Filter 
                 filters={filters}
                 onFilterChange={handleFilterChange}
                 events={events}
+                categories={categories} // Passer les catégories au composant Filter
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
@@ -140,7 +165,12 @@ export default function Events({ setPage, setEventId, searchQuery }) {
                             <div className="p-4">
                                 <h2 className="text-lg font-semibold text-gray-800">{event.title}</h2>
                                 <p className="text-sm text-gray-500 mt-1">📅 {formatDateForDisplay(event.date)} - 📍 {event.place}</p>
-                                <p className="text-md font-bold text-indigo-600 mt-2">💰 {event.price} €</p>
+                                <div className="flex justify-between items-center mt-2">
+                                    <p className="text-md font-bold text-indigo-600">💰 {event.price} €</p>
+                                    <span className="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full">
+                                        {getCategoryName(event.category_id)}
+                                    </span>
+                                </div>
                                 <p className={`text-sm mt-1 ${event.places_left <= 0 ? 'text-red-600 font-bold' : 'text-green-600'}`}>
                                   🎟️ {event.places_left <= 0 ? 'COMPLET' : `${event.places_left} Places restantes`}
                                 </p>
