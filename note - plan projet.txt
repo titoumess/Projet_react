@@ -77,7 +77,6 @@ Components :
 
 
 
-Filtrer par Catégorie
 responsive
-dark/light mode
-
+commenter 
+readme

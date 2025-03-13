@@ -8,7 +8,7 @@ export default function Header({ setPage, setSearchQuery }) {
                 {/* Logo */}
                 <div>
                     <img 
-                        src="/public/logo_test.png" 
+                        src="/public/logo.jpeg" 
                         alt="Logo du site" 
                         className="h-10 cursor-pointer"
                         onClick={() => setPage('events')}
