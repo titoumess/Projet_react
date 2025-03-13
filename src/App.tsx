@@ -2,6 +2,8 @@ import { useState } from "react";
 import Events from './Events'; 
 import Header from './components/Header';
 import Details from './Details';
+import { useLocalStorage } from "./useLocalStorage";
+import CartModal from "./PopupPanier";
 
 function App() {
   const [page, setPage] = useState('events');

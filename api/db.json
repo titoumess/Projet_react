@@ -10,7 +10,7 @@
       "image": "chambord_concert.jpeg",
       "organizer": "Ville de Chambord",
       "category_id": 1,
-      "places_left": 19
+      "places_left": 16
     },
     {
       "id": "2",
@@ -34,7 +34,7 @@
       "image": "mario_kart_irl.jpeg",
       "organizer": "GoKart Legends",
       "category_id": 3,
-      "places_left": 36
+      "places_left": 31
     },
     {
       "id": "5",
@@ -58,7 +58,7 @@
       "image": "jazz_festival.jpeg",
       "organizer": "Lac d'Annecy Music",
       "category_id": 1,
-      "places_left": 138
+      "places_left": 135
     },
     {
       "id": "7",
@@ -70,7 +70,7 @@
       "image": "relais_ville.jpeg",
       "organizer": "RunParis",
       "category_id": 2,
-      "places_left": 33
+      "places_left": 29
     },
     {
       "id": "8",
@@ -82,7 +82,7 @@
       "image": "flechettes_geantes.jpeg",
       "organizer": "DartMasters",
       "category_id": 2,
-      "places_left": 39
+      "places_left": 25
     },
     {
       "id": "9",
@@ -94,7 +94,7 @@
       "image": "escape_game_plage.jpeg",
       "organizer": "BeachEscapes",
       "category_id": 3,
-      "places_left": 100
+      "places_left": 82
     },
     {
       "id": "10",
@@ -106,7 +106,7 @@
       "image": "deguisement_steampunk.jpeg",
       "organizer": "CosplayParis",
       "category_id": 3,
-      "places_left": 108
+      "places_left": 101
     }
   ],
   "category": [

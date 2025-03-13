@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocalStorage } from "../useLocalStorage";
 
 export default function FormResa({ event, setEventPlaces }) {
   const [name, setName] = useState("");
@@ -67,15 +68,7 @@ export default function FormResa({ event, setEventPlaces }) {
       console.log(newPlacesLeft)
       setEventPlaces(newPlacesLeft)
     }
-    const reservationData = {
-      name,
-      email,
-      places,
-      eventId: event.id,
-      eventName: event.name,
-    };
-    
-    localStorage.setItem(`reservation_${event.id}`, JSON.stringify(reservationData));
+
   
     // Mise à jour du state local pour refléter le changement
     setSuccess(true);
@@ -91,6 +84,13 @@ export default function FormResa({ event, setEventPlaces }) {
     }, 3000);
   };
   
+  // 🛒 Utilisation du hook `useLocalStorage`
+  const [cartItems, setCartItems] = useLocalStorage("cart", []);
+
+  // 🛒 Ajouter un article au panier
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
 
   return (
     <div className="mt-6 bg-gray-100 p-4 rounded">
@@ -140,12 +140,9 @@ export default function FormResa({ event, setEventPlaces }) {
           />
           {errors.places && <p className="text-red-500 text-sm mt-1">{errors.places}</p>}
         </div>
-        
+
         <div className="mt-4">
-          <button
-            type="submit"
-            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
+          <button type="submit" onClick={() => addToCart({ "name": name, "email": email, "eventId": event.id, "name_activity": event.title, "places": places, "price": event.price })}>
             Ajouter au panier
           </button>
         </div>
